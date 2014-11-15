@@ -1,0 +1,9 @@
+Description goes here
+
+== TODO ==
+
+* Target class should get tickCounter so we can set the time for each target for a check. Low-priority services can that way be checked every 10 minutes for example and high-priority targets every minute. Services class that just needs to decrease the tick counter and execute the target check if the counter reaches zero.
+
+* ALARM_THRESHOLD should be target specific.
+
+* Targets and Stats should be kept in the database
