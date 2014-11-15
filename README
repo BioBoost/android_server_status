@@ -9,3 +9,5 @@ Description goes here
 * Targets and Stats should be kept in the database
 
 * Check if an internet connection is available before executing the target check.
+
+* Display service status on main UI.
