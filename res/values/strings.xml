@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">ServerStatus</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
 
 </resources>
