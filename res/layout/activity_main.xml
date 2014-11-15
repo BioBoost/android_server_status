@@ -28,5 +28,22 @@
         android:text="@string/stop_service"
         android:layout_below="@+id/start_service"
         android:onClick="onClickStopService" />
+    <Button
+        android:id="@+id/display_stats"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/display_stats"
+        android:layout_below="@+id/stop_service"
+        android:onClick="displayStats" />
 
+    <TableLayout
+        android:id="@+id/tblStatResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/display_stats"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" >
+    </TableLayout>
 </RelativeLayout>
