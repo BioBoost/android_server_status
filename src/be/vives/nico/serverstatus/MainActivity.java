@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
 	// Start our service
 	public void onClickStartService(View V)
 	{
+		Toast.makeText(this, "Staring Server Status Service", Toast.LENGTH_LONG).show();
 		startService(new Intent(this, ServerStatusService.class));
 		Log.v(TAG, "Started service");
 	}
