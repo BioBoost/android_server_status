@@ -23,5 +23,10 @@ public abstract class Target {
 		return this.stats;
 	}
 	
+	public String getFailedStatusReport() {
+		return this.getUri() + " failed to respond " + this.getStats().getSubsequentFails()
+				+ " times in a row.";
+	}
+	
 	abstract Boolean doStatusCheck() throws Exception;
 }
