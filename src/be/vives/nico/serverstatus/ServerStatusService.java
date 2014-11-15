@@ -42,9 +42,7 @@ public class ServerStatusService extends Service {
 
     	// Do the check
     	Log.v(TAG, "Checking the status of the target");
-        for (Target target : targets) {
-            new CheckTargetStatusTask().execute(target);
-            
+        for (Target target : targets) {            
     		new CheckTargetStatusTask(new IStatusResultReady() {
 				@Override
 				public void onStatusResultReady(Target target) {
