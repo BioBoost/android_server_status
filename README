@@ -7,3 +7,5 @@ Description goes here
 * ALARM_THRESHOLD should be target specific.
 
 * Targets and Stats should be kept in the database
+
+* Check if an internet connection is available before executing the target check.
