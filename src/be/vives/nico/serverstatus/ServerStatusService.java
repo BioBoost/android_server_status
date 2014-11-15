@@ -3,6 +3,7 @@ package be.vives.nico.serverstatus;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.util.Log;
 public class ServerStatusService extends Service {
     
     private final static String TAG = "ServerStatus.ServerStatusService";
+    
+    private static Boolean keepRunning = true;
     
     // Currently targets are hardcoded. Currently have no idea
     // on how to get the data to this task from outside.
@@ -50,7 +53,11 @@ public class ServerStatusService extends Service {
         Log.v(TAG, "onDestroy");
         
         // Restart the service in a minute
-        this.scheduleService(60);
+        if (ServerStatusService.keepRunning) {
+            this.scheduleService(60);
+        } else {
+            Log.v(TAG, "Not rescheduling status check");
+        }
     }
     
     public void scheduleService(int seconds) {
@@ -70,5 +77,16 @@ public class ServerStatusService extends Service {
             PendingIntent.getService(this, 0, new Intent(this, ServerStatusService.class), 0)
         );
         Log.v(TAG, "Scheduling status check in " + seconds + " seconds");
+    }
+    
+    public static void stopScheduling(Context context) {
+    	ServerStatusService.keepRunning = false;
+		AlarmManager alarm = (AlarmManager)context.getSystemService(ALARM_SERVICE);
+		alarm.cancel(PendingIntent.getService(context, 0, new Intent(context, ServerStatusService.class), 0));
+    }
+    
+    public static void startScheduling(Context context) {
+    	ServerStatusService.keepRunning = true;
+		context.startService(new Intent(context, ServerStatusService.class));
     }
 }
