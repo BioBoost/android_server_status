@@ -1,6 +1,8 @@
 package be.vives.nico.serverstatus;
 
 public abstract class Target {
+	
+	private long id;	// For database
 
 	// Uri can be IP address, host name, website url
 	private String uri;
@@ -26,6 +28,14 @@ public abstract class Target {
 	public String getFailedStatusReport() {
 		return this.getUri() + " failed to respond " + this.getStats().getSubsequentFails()
 				+ " times in a row.";
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public long getId() {
+		return this.id;
 	}
 	
 	abstract Boolean doStatusCheck() throws Exception;
