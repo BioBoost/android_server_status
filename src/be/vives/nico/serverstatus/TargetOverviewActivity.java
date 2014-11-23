@@ -48,10 +48,15 @@ public class TargetOverviewActivity extends ListActivity {
     private void populateTargets()
     {
     	targets = new ArrayList<String>();
-    	targets.add("http://www.google.be");
-    	targets.add("http://www.labict.be");
-    	targets.add("ping:labict.be");
-    	targets.add("http://apps.khbo.be");
-    	targets.add("ping:apps.khbo.be");
+    	
+		TargetsDataSource doa = new TargetsDataSource(this);
+		doa.open();
+		ArrayList<Target> result = doa.getAllTargets();
+		
+		for (Target target : result) {
+			targets.add(target.getUri());
+		}
+		
+		doa.close();
     }
 }
