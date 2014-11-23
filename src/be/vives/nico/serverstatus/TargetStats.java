@@ -10,6 +10,12 @@ public class TargetStats {
 		this.clearStats();
 	}
 	
+	public void setStats(int successes, int fails, int subsequentFails) {
+		this.successes = successes;
+		this.fails = fails;
+		this.subsequentFails = subsequentFails;
+	}
+	
 	public void clearStats() {
 		this.fails = 0;
 		this.successes = 0;
