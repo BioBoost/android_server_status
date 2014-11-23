@@ -1,5 +1,7 @@
 package be.vives.nico.serverstatus;
 
+import java.util.ArrayList;
+
 import be.vives.nico.serverstatus.ServerStatusContract.TargetEntry;
 import android.content.ContentValues;
 import android.content.Context;
@@ -79,6 +81,28 @@ public class TargetsDataSource {
 			cursor.close();
 		}
 		return newTarget;
+	}
+	
+	public ArrayList<Target> getAllTargets() {
+		ArrayList<Target> targets = new ArrayList<Target>();
+
+		// Get all target records and add them to the list
+		Cursor cursor = database.query(TargetEntry.TABLE_NAME, allColumns, null, null, null, null, null);
+
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			try {
+				Target target = cursorToTarget(cursor);
+				targets.add(target);
+			} catch (Exception e) {
+				Log.d("Database", e.getMessage());
+			}
+			cursor.moveToNext();
+		}
+		
+		// Make sure to close the cursor
+		cursor.close();
+		return targets;
 	}
 
 	private Target cursorToTarget(Cursor cursor) throws Exception {
