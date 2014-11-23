@@ -1,5 +1,7 @@
 package be.vives.nico.serverstatus;
 
+import java.util.ArrayList;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -16,16 +18,6 @@ public class ServerStatusService extends Service {
     
     private final static int ALARM_THRESHOLD = 5;	// Should be added to Target class
     
-    // Currently targets are hardcoded. Currently have no idea
-    // on how to get the data to this task from outside.
-    // Later should be fetched from DB
-    public final static Target targets[] = {
-        new TargetHost("apps.khbo.be"),
-        new TargetHost("www.labict.be"),
-        new TargetHost("www.amazon.com"),
-        new TargetHost("www.vives.be")
-    };
-    
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -38,7 +30,11 @@ public class ServerStatusService extends Service {
 
     @Override
     public void onStart(Intent intent, int startId) {
-    	Log.v(TAG, "onStart");
+    	// Get the targets from the database
+		TargetsDataSource doa = new TargetsDataSource(this);
+		doa.open();
+		ArrayList<Target> targets = doa.getAllTargets();
+		doa.close();
 
     	// Do the check
     	Log.v(TAG, "Checking the status of the target");
@@ -47,9 +43,16 @@ public class ServerStatusService extends Service {
 				@Override
 				public void onStatusResultReady(Target target) {
 					if (target.getStats().getSubsequentFails() >= ServerStatusService.ALARM_THRESHOLD) {
-						ReportTools.sendSMS("+32473526520", target.getFailedStatusReport());
+						//ReportTools.sendSMS("+32473526520", target.getFailedStatusReport());
+						ReportTools.vibrate(getApplicationContext(), 300);
 						target.getStats().resetSubsequentFails();
 					}
+
+					// Save the target to the database
+					TargetsDataSource doa = new TargetsDataSource(getApplicationContext());
+					doa.open();
+					doa.saveTarget(target);
+					doa.close();
 				}
 			}).execute(target);
         }
