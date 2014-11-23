@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class CheckTargetStatusTask extends AsyncTask<Target, Integer, Target> {
     
-    private final static String TAG = "ServerStatusService.PingTask";
+    private final static String TAG = "CheckTargetStatusTask";
     
     // Optional callback for when ping check is ready
     private IStatusResultReady listener;
@@ -24,7 +24,7 @@ public class CheckTargetStatusTask extends AsyncTask<Target, Integer, Target> {
         Log.v(TAG, "Starting Status Check for " + target.getUri());
         Boolean success = false;
         
-        // Do the actual ping
+        // Do the actual check
         try {
         	success = target.doStatusCheck();
         } catch (Exception e) {
