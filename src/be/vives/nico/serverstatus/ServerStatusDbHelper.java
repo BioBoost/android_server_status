@@ -21,7 +21,7 @@ public class ServerStatusDbHelper extends SQLiteOpenHelper {
         TargetEntry.COLUMN_NAME_TYPE + TEXT_TYPE + COMMA_SEP +
         TargetEntry.COLUMN_NAME_SUCCESSES + INTEGER_TYPE + COMMA_SEP +
         TargetEntry.COLUMN_NAME_FAILS + INTEGER_TYPE + COMMA_SEP +
-        TargetEntry.COLUMN_NAME_SUBSEQUENT_FAILS + INTEGER_TYPE + COMMA_SEP +
+        TargetEntry.COLUMN_NAME_SUBSEQUENT_FAILS + INTEGER_TYPE +
         " )";
 
     private static final String SQL_DELETE_ENTRIES =
