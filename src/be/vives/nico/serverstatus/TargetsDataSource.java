@@ -113,9 +113,6 @@ public class TargetsDataSource {
 	private Target cursorToTarget(Cursor cursor) throws Exception {
 		// TODO Column indications need to be refactored
 		Target target;
-
-		Log.v("Database", "Cursor: " + cursor.getString(2) + " == " + TargetHost.class.getSimpleName().toString() +
-				 " ==? " + (cursor.getString(2) == TargetHost.class.getSimpleName().toString()));
 		
 		if (cursor.getString(2).equals(TargetHost.class.getSimpleName().toString())) {
 			target = new TargetHost(cursor.getString(1));
