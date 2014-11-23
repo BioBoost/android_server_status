@@ -10,6 +10,7 @@ public abstract class Target {
 	
 	public Target(String uri) {
 		this.setUri(uri);
+		this.id = -1;
 	}
 	
 	public void setUri(String uri) {
