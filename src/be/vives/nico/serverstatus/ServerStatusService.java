@@ -44,7 +44,7 @@ public class ServerStatusService extends Service {
 				public void onStatusResultReady(Target target) {
 					if (target.getStats().getSubsequentFails() >= ServerStatusService.ALARM_THRESHOLD) {
 						//ReportTools.sendSMS("+32473526520", target.getFailedStatusReport());
-						ReportTools.vibrate(getApplicationContext(), 300);
+						ReportTools.vibrate(getApplicationContext(), 2000);
 						target.getStats().resetSubsequentFails();
 					}
 

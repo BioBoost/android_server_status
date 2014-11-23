@@ -148,6 +148,8 @@ public class TargetsDataSource {
 		
 		if (cursor.getString(2).equals(TargetHost.class.getSimpleName().toString())) {
 			target = new TargetHost(cursor.getString(1));
+		} else if (cursor.getString(2).equals(TargetSite.class.getSimpleName().toString())) {
+			target = new TargetSite(cursor.getString(1));
 		} else {
 			throw new Exception("Unknown target type specicified in database");
 		}

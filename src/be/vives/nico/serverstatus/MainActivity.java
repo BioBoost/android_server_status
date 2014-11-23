@@ -45,7 +45,9 @@ public class MainActivity extends Activity {
 				new TargetHost("www.vives.be"),
 				new TargetHost("www.amazon.com"),
 				new TargetHost("www.khbo.be"),
-				new TargetHost("www.example.org")
+				new TargetHost("www.example.org"),
+				new TargetSite("http://www.labict.be"),
+				new TargetSite("http://www.labict.be/fake")
 		};
 		
 		TargetsDataSource doa = new TargetsDataSource(this);
