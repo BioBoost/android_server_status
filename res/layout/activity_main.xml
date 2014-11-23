@@ -29,22 +29,13 @@
         android:layout_below="@+id/start_service"
         android:onClick="onClickStopService" />
     <Button
-        android:id="@+id/display_stats"
-        android:layout_marginTop="20dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/display_stats"
-        android:layout_below="@+id/stop_service"
-        android:onClick="displayStats" />
-    <Button
         android:id="@+id/displayTargets"
         android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Display target overview"
-        android:layout_below="@+id/display_stats"
+        android:layout_below="@+id/stop_service"
         android:onClick="displayTargets" />
 
     <Button
@@ -56,13 +47,4 @@
         android:gravity="center_horizontal"
         android:onClick="resetDatabase"
         android:text="Reset Database" />
-
-    <TableLayout
-        android:id="@+id/tblStatResults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resetDatabase"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" >
-    </TableLayout>
 </RelativeLayout>
