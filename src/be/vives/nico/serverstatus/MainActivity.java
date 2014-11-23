@@ -96,4 +96,23 @@ public class MainActivity extends Activity {
 	public void displayTargets(View v) {
 		startActivity(new Intent(this, TargetOverviewActivity.class));
 	}
+	
+	public void addTargetToDb(View v) {
+		
+		TargetsDataSource doa = new TargetsDataSource(this);
+		doa.open();
+		
+		Target test = new TargetHost("www.belgacom.be");
+		test.getStats().setStats(23, 11, 2);
+		
+		Target result = doa.insertTarget(test);
+		
+		if (result != null) {
+			Log.v("DATABASE", "Created record with id = " + result.getId());
+		} else {
+			Log.d("DATABASE", "Failed to create record");
+		}
+		
+		doa.close();
+	}
 }
