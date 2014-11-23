@@ -37,6 +37,15 @@
         android:text="@string/display_stats"
         android:layout_below="@+id/stop_service"
         android:onClick="displayStats" />
+    <Button
+        android:id="@+id/displayTargets"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Display target overview"
+        android:layout_below="@+id/display_stats"
+        android:onClick="displayTargets" />
 
     <TableLayout
         android:id="@+id/tblStatResults"

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="http://www.target.com"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/target"
+        android:orientation="horizontal">
+
+	    <TextView
+	        android:id="@+id/txtSuccesses"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:gravity="center_vertical"
+	        android:text="123"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+	        android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgSuccesses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/successes_list_row" />
+
+	    <TextView
+	        android:id="@+id/txtFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:gravity="center_vertical"
+	        android:text="123"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+	        android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fails_list_row" />
+
+	    <TextView
+	        android:id="@+id/txtSunsequentFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:gravity="center_vertical"
+	        android:text="123"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+	        android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgSunsequentFails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/subsequentfails_list_row" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package be.vives.nico.serverstatus;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,5 +91,9 @@ public class MainActivity extends Activity {
     	    tableRow2.addView(txtSubsequentFails);
     	    table.addView(tableRow2);
     	}
+	}
+	
+	public void displayTargets(View v) {
+		startActivity(new Intent(this, TargetOverviewActivity.class));
 	}
 }

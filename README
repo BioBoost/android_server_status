@@ -11,3 +11,7 @@ Description goes here
 * Check if an internet connection is available before executing the target check.
 
 * Display service status on main UI.
+
+== References ==
+
+* Nice blog on using drawables for button skins: http://www.dibbus.com/2011/02/gradient-buttons-for-android/

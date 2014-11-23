@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDEDED"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/lblTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
+        android:text="www.labict.be"
+        android:textSize="24sp"
+        android:background="#097054"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/laySuccesses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lblTitle"
+        android:orientation="horizontal" >
+
+	    <ImageView
+	        android:id="@+id/imgSuccesses"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/successes"
+	        android:layout_margin="16dp" />
+
+	    <TextView
+	        android:id="@+id/txtSuccesses"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:text="123 successes"
+        	android:textSize="20sp"
+        	android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layFails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/laySuccesses"
+        android:orientation="horizontal" >
+
+	    <ImageView
+	        android:id="@+id/imgFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/fails"
+	        android:layout_margin="16dp" />
+
+	    <TextView
+	        android:id="@+id/txtFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:text="23 fails"
+        	android:textSize="20sp"
+        	android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/laySubsequentFails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/layFails"
+        android:orientation="horizontal" >
+
+	    <ImageView
+	        android:id="@+id/imgSubsequentFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/subsequentfails"
+	        android:layout_margin="16dp" />
+
+	    <TextView
+	        android:id="@+id/txtSubsequentFails"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:text="4 subsequent fails"
+        	android:textSize="20sp"
+        	android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnShowLogHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/laySubsequentFails"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_blue"
+        android:text="Show log history"
+        android:textColor="#FFFFFF" 
+        android:paddingLeft="20dp" 
+        android:paddingRight="20dp"
+        android:textSize="16sp" />
+"
+
+</RelativeLayout>
