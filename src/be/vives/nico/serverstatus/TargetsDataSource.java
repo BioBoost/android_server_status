@@ -102,18 +102,17 @@ public class TargetsDataSource {
 				TargetEntry.COLUMN_NAME_ID + " = " + id, null, null, null, null);
 		cursor.moveToFirst();
 		
-		// Get the new target from the db
-		Target newTarget;
+		// Get the target from the db
+		Target target;
 		try {
-			newTarget = cursorToTarget(cursor);
-			Log.v("Database", "Created new target in db: " + newTarget.toString());
+			target = cursorToTarget(cursor);
 		} catch (Exception e) {
 			Log.d("Database", e.getMessage());
-			newTarget = null;
+			target = null;
 		} finally {
 			cursor.close();
 		}
-		return newTarget;
+		return target;
 	}
 	
 	public ArrayList<Target> getAllTargets() {
