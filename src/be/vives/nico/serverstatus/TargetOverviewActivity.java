@@ -14,8 +14,9 @@ import android.widget.ListView;
 import be.vives.nico.serverstatus.TargetDetails;
 
 public class TargetOverviewActivity extends ListActivity {
-	
-	private ArrayList<String> targets;
+
+	//private ArrayList<String> targets;
+	private ArrayList<Target> targets;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,20 @@ public class TargetOverviewActivity extends ListActivity {
 		
 		// Add targets to list
         populateTargets();
+	}
+	
+    private void populateTargets()
+    {
+    	// First get the targets from the database
+		TargetsDataSource doa = new TargetsDataSource(this);
+		doa.open();
+		this.targets = doa.getAllTargets();
+		doa.close();
+		
+        // Create custom Target adapter
+        ArrayAdapter<Target> arrayAdapter = new TargetArrayAdapter(this, targets);
         
-        // Create The Adapter with passing ArrayList as 3rd parameter
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, targets);
-        
-        // Set The Adapter
+        // Set the adapter for the ListView
         ListView lv = getListView();
         lv.setAdapter(arrayAdapter); 
         
@@ -43,20 +53,5 @@ public class TargetOverviewActivity extends ListActivity {
             	startActivity(new Intent(view.getContext(), TargetDetails.class));
             }
         });
-	}
-	
-    private void populateTargets()
-    {
-    	targets = new ArrayList<String>();
-    	
-		TargetsDataSource doa = new TargetsDataSource(this);
-		doa.open();
-		ArrayList<Target> result = doa.getAllTargets();
-		
-		for (Target target : result) {
-			targets.add(target.getUri());
-		}
-		
-		doa.close();
     }
 }
