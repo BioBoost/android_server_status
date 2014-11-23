@@ -57,6 +57,39 @@ public class TargetsDataSource {
 		// Get the new target from the db
 		return this.getTarget(insertId);
 	}
+	
+	public Target saveTarget(Target target) {
+		
+		if (target.getId() != -1) {	// Target already present in database
+			
+			// Add fields of target to content values
+			ContentValues values = new ContentValues();
+			values.put(TargetEntry.COLUMN_NAME_URI, target.getUri());
+			values.put(TargetEntry.COLUMN_NAME_TYPE, target.getClass().getSimpleName().toString());
+			values.put(TargetEntry.COLUMN_NAME_SUCCESSES, target.getStats().getSuccesses());
+			values.put(TargetEntry.COLUMN_NAME_FAILS, target.getStats().getFails());
+			values.put(TargetEntry.COLUMN_NAME_SUBSEQUENT_FAILS, target.getStats().getSubsequentFails());
+			
+			Log.v("Database", "Trying to update: " + values.toString());
+
+			// Update the new row, returning the number of affected rows
+			int affectedRows = database.update(
+				TargetEntry.TABLE_NAME,					
+		        values,
+		        TargetEntry.COLUMN_NAME_ID + " = " + target.getId(),
+		        null
+			);
+
+			if (affectedRows == 1) {
+				return this.getTarget(target.getId());
+			} else {
+				return null;
+			}
+			
+		} else {	// Target needs to be inserted
+			return insertTarget(target);
+		}
+	}
 
 	public void deleteTarget(Target target) {
 		long id = target.getId();
