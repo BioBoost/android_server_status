@@ -97,20 +97,30 @@ public class MainActivity extends Activity {
 		startActivity(new Intent(this, TargetOverviewActivity.class));
 	}
 	
-	public void addTargetToDb(View v) {
+	public void resetDatabase(View v) {
+		
+		Target[] samples = {
+				new TargetHost("www.labict.be"),
+				new TargetHost("www.vives.be"),
+				new TargetHost("www.amazon.com"),
+				new TargetHost("www.khbo.be"),
+				new TargetHost("www.example.org")
+		};
 		
 		TargetsDataSource doa = new TargetsDataSource(this);
 		doa.open();
 		
-		Target test = new TargetHost("www.belgacom.be");
-		test.getStats().setStats(23, 11, 2);
+		// Remove all existing records
+		doa.deleteAllTargets();
 		
-		Target result = doa.insertTarget(test);
-		
-		if (result != null) {
-			Log.v("DATABASE", "Created record with id = " + result.getId());
-		} else {
-			Log.d("DATABASE", "Failed to create record");
+		for (Target target : samples) {
+			Target result = doa.insertTarget(target);
+			
+			if (result != null) {
+				Log.v("DATABASE", "Created record with id = " + result.getId());
+			} else {
+				Log.d("DATABASE", "Failed to create record");
+			}
 		}
 		
 		doa.close();

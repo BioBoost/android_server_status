@@ -104,6 +104,11 @@ public class TargetsDataSource {
 		cursor.close();
 		return targets;
 	}
+	
+	public void deleteAllTargets() {
+		Log.v("Database", "Deleting all target records");
+		database.delete(TargetEntry.TABLE_NAME, TargetEntry.COLUMN_NAME_ID + " > " + 0, null);
+	}
 
 	private Target cursorToTarget(Cursor cursor) throws Exception {
 		// TODO Column indications need to be refactored

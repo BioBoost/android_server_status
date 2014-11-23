@@ -48,20 +48,20 @@
         android:onClick="displayTargets" />
 
     <Button
-        android:id="@+id/addTargetToDb"
+        android:id="@+id/resetDatabase"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/displayTargets"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:onClick="addTargetToDb"
-        android:text="Add target to DB" />
+        android:onClick="resetDatabase"
+        android:text="Reset Database" />
 
     <TableLayout
         android:id="@+id/tblStatResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/display_stats"
+        android:layout_below="@+id/resetDatabase"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp" >
     </TableLayout>
