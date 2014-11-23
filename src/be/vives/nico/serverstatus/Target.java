@@ -38,5 +38,10 @@ public abstract class Target {
 		return this.id;
 	}
 	
+	@Override
+	public String toString() {
+		return "{" + this.getId() + "}[" + this.getUri() + "] => " + this.getStats().toString();
+	}
+	
 	abstract Boolean doStatusCheck() throws Exception;
 }

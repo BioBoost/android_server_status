@@ -17,9 +17,4 @@ public class TargetHost extends Target {
 		return this.getUri() + " failed to respond " + this.getStats().getSubsequentFails()
 				+ " times in a row to a ping request.";
 	}
-	
-	@Override
-	public String toString() {
-		return "[" + this.getUri() + "] => " + this.getStats().toString();
-	}
 }
