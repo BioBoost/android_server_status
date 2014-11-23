@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,11 +47,15 @@ public class TargetOverviewActivity extends ListActivity {
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	// Get the selected item
-                //String selectedItem = targets.get(position);
-                
+            	// Get the selected target id
+                long targetId = targets.get(position).getId();
+            	
+            	// Create an intent with the ID of the target as data
+            	Intent intent = new Intent(view.getContext(), TargetDetails.class);
+            	intent.setData(Uri.parse(String.valueOf(targetId)));
+
             	// Launch the target detail activity
-            	startActivity(new Intent(view.getContext(), TargetDetails.class));
+            	startActivity(intent);
             }
         });
     }
