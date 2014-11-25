@@ -110,6 +110,10 @@ public class TargetOverviewActivity extends ListActivity {
 		        .setNegativeButton("No", null)
 		        .show();
 	            return true;
+	        case R.id.refresh_targets:
+	            Log.v("Menu", "Refreshing target overview");
+	            populateTargets();
+	            return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

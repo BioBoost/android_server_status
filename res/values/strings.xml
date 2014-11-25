@@ -14,6 +14,7 @@
     <string name="target_type">Target type</string>
     <string name="create_target">Create Target</string>
     <string name="delete_all_targets">Delete All</string>
+    <string name="refresh_targets">Refresh</string>
     
     <string-array name="target_types">
         <item>Host</item>
