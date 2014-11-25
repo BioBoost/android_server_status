@@ -2,7 +2,9 @@ package be.vives.nico.serverstatus;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -80,10 +82,34 @@ public class TargetOverviewActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.new_target:
-                Log.v("Menu", "Creating new target");
-                startActivity(new Intent(this, CreateTargetActivity.class));
-                return true;
+	        case R.id.new_target:
+	            Log.v("Menu", "Creating new target");
+	            startActivity(new Intent(this, CreateTargetActivity.class));
+	            return true;
+	        case R.id.delete_all_targets:
+	        	// Ask user if he's sure
+	        	new AlertDialog.Builder(this)
+	            .setIcon(android.R.drawable.ic_dialog_alert)
+	            .setTitle("Deleting All Targets")
+	            .setMessage("Are you sure you want to delete all targets from the database?")
+	            .setPositiveButton("Yes I Am", new DialogInterface.OnClickListener()
+		        {
+		            @Override
+		            public void onClick(DialogInterface dialog, int which) {
+			            Log.v("Menu", "Deleting all targets from db");
+			            
+			    		TargetsDataSource doa = new TargetsDataSource(getBaseContext());
+			    		doa.open();
+			    		doa.deleteAllTargets();		// Remove all existing records
+			    		doa.close();
+			    		
+			    		// Refresh list
+			            populateTargets();
+		            }
+		        })
+		        .setNegativeButton("No", null)
+		        .show();
+	            return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
