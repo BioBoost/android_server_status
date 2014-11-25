@@ -9,5 +9,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_target_overview">TargetOverviewActivity</string>
     <string name="new_target">New Target</string>
+    <string name="title_activity_create_target">CreateTargetActivity</string>
+    <string name="target_uri">Target URI</string>
+    <string name="target_type">Target type</string>
+    <string name="create_target">Create Target</string>
+    
+    <string-array name="target_types">
+        <item>Host</item>
+        <item>Website</item>
+    </string-array>
 
 </resources>

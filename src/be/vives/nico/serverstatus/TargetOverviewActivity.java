@@ -77,6 +77,7 @@ public class TargetOverviewActivity extends ListActivity {
         switch (item.getItemId()) {
             case R.id.new_target:
                 Log.v("Menu", "Creating new target");
+                startActivity(new Intent(this, CreateTargetActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

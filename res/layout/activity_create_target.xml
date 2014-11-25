@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:padding="12dp" android:id="@+id/linearLayout1">
+	
+	    <TextView
+	        android:id="@+id/lblTargetUri"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/target_uri" />
+    
+	    <EditText
+	        android:id="@+id/txtTargetUri"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="textUri"
+	        android:hint="http://labict.be" >
+	        <requestFocus />
+	    </EditText>
+	
+	    <TextView
+	        android:id="@+id/lblTargetType"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/target_type"
+	        android:layout_marginTop="12dp" />
+
+	    <Spinner
+	        android:id="@+id/lstTargetType"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:entries="@array/target_types" />
+	    
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnCreateTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_target"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_blue"
+	    android:layout_marginTop="24dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:onClick="onCreateTarget" />
+
+</RelativeLayout>

@@ -39,6 +39,10 @@
             android:name=".TargetOverviewActivity"
             android:label="@string/title_activity_target_overview" >
         </activity>
+        <activity
+            android:name=".CreateTargetActivity"
+            android:label="@string/title_activity_create_target" >
+        </activity>
     </application>
 
 </manifest>
