@@ -26,6 +26,11 @@ public class TargetOverviewActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
 		
 		// Add targets to list
         populateTargets();
