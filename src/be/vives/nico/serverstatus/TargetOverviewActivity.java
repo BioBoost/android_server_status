@@ -141,7 +141,12 @@ public class TargetOverviewActivity extends ListActivity {
         switch (item.getItemId()) {
             case R.id.edit_target:
                 target = targets.get(info.position);
-                Toast.makeText(this, "Edit target " + target.getUri(), Toast.LENGTH_SHORT).show();
+                
+                // Launch save target activity with id as data
+                Intent intent = new Intent(this, SaveTargetActivity.class);
+                intent.setData(Uri.parse(target.getId() + ""));
+                startActivity(intent);
+                
                 return true;
             case R.id.delete_target:
                 target = targets.get(info.position);
