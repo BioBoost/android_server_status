@@ -1,5 +1,6 @@
 package be.vives.nico.serverstatus;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,12 +10,17 @@ public class CheckTargetStatusTask extends AsyncTask<Target, Integer, Target> {
     
     // Optional callback for when ping check is ready
     private IStatusResultReady listener;
+    
+    // Context is needed for internet check
+    private Context context;
 
-    public CheckTargetStatusTask(IStatusResultReady listener) {
+    public CheckTargetStatusTask(IStatusResultReady listener, Context context) {
+    	this(context);
         this.listener = listener;
     }
 
-    public CheckTargetStatusTask() {
+    public CheckTargetStatusTask(Context context) {
+    	this.context = context;
     }
     
     // Do the long-running work in here
@@ -24,17 +30,20 @@ public class CheckTargetStatusTask extends AsyncTask<Target, Integer, Target> {
         Log.v(TAG, "Starting Status Check for " + target.getUri());
         Boolean success = false;
         
-        // Do the actual check
-        try {
-        	success = target.doStatusCheck();
-        } catch (Exception e) {
-            Log.d(TAG, "Exception: " + e);
-        }
-        
-        if (success) {
-            target.getStats().incrementSuccesses();
-        } else {
-        	target.getStats().incrementFails();
+        // Check if internet connection available
+        if (NetworkTools.isNetworkAvailable(this.context)) {
+            // Do the actual check
+            try {
+            	success = target.doStatusCheck();
+            } catch (Exception e) {
+                Log.d(TAG, "Exception: " + e);
+            }
+            
+            if (success) {
+                target.getStats().incrementSuccesses();
+            } else {
+            	target.getStats().incrementFails();
+            }
         }
             
         return target;

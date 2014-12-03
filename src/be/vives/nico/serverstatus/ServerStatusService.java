@@ -54,7 +54,7 @@ public class ServerStatusService extends Service {
 					doa.saveTarget(target);
 					doa.close();
 				}
-			}).execute(target);
+			}, this).execute(target);
         }
     	
         // We don't want this service to stay in memory, so we stop it here.
