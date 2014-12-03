@@ -8,7 +8,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -18,7 +17,7 @@ public class ServerStatusService extends Service {
     
     private static Boolean keepRunning = true;
     
-    private final static int ALARM_THRESHOLD = 5;	// Should be added to Target class
+    private final static int ALARM_THRESHOLD = 1;	// Should be added to Target class
     
     // Preferences
     private boolean alarm_dovibrate;    
@@ -66,6 +65,7 @@ public class ServerStatusService extends Service {
 						if (alarm_dosms) {
 							ReportTools.sendSMS(alarm_phonenumber, target.getFailedStatusReport());							
 						}
+						ReportTools.createNotification(getApplicationContext(), target, target.getFailedStatusReport());
 						target.getStats().resetSubsequentFails();
 					}
 

@@ -1,6 +1,7 @@
 package be.vives.nico.serverstatus;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -22,6 +23,10 @@ public class TargetDetails extends Activity {
 		doa.open();
 		this.target = doa.getTarget(targetId);
 		doa.close();
+		
+		// Cancel the notification we may have created
+		NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+		nm.cancel((int)targetId);
 		
 		populateTheView();
 	}
