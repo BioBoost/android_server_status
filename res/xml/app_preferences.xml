@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:key="cat_general"
+        android:title="@string/general">
+        <EditTextPreference android:key="phone_number" android:title="@string/phone_number"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="cat_reporting" android:title="@string/reporting">
+        <CheckBoxPreference android:key="alarm_vibrate" android:title="@string/vibrate"/>
+        <CheckBoxPreference android:key="alarm_sentsms" android:title="@string/sent_sms"/>
+    </PreferenceCategory>
+</PreferenceScreen>

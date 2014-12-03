@@ -68,4 +68,8 @@ public class MainActivity extends Activity {
 		
 		doa.close();
 	}
+	
+	public void openPreferences(View view) {
+		startActivity(new Intent(this, AppPreferenceActivity.class));
+	}
 }

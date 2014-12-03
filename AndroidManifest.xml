@@ -44,6 +44,10 @@
             android:name=".SaveTargetActivity"
             android:label="@string/title_activity_create_target" >
         </activity>
+        <activity
+            android:name=".AppPreferenceActivity"
+            android:label="@string/title_activity_app_preference" >
+        </activity>
     </application>
 
 </manifest>

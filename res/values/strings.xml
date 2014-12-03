@@ -22,10 +22,17 @@
     <string name="delete">Delete</string>
     <string name="reset_stats">Reset Stats</string>
     <string name="reset">Reset</string>
-    
+    <string name="general">General</string>
+    <string name="reporting">Reporting</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="sent_sms">Sent SMS</string>
+    <string name="phone_number">Phone Number</string>
+
     <string-array name="target_types">
         <item>Host</item>
         <item>Website</item>
     </string-array>
+
+    <string name="title_activity_app_preference">AppPreferenceActivity</string>
 
 </resources>
