@@ -181,6 +181,22 @@ public class TargetOverviewActivity extends ListActivity {
 		        .show();
 	        	
                 return true;
+            case R.id.reset_stats:
+            	
+	            Log.v("Menu", "Resetting stats of target " + selectedTarget.getUri());
+            	
+	            // Reset stats
+	    		TargetsDataSource doa = new TargetsDataSource(getBaseContext());
+	    		doa.open();
+	    		selectedTarget.getStats().clearStats();
+	    		doa.saveTarget(selectedTarget);
+	    		selectedTarget = null;
+	    		doa.close();
+	    		
+                // Re-populate listview
+                populateTargets();
+	        	
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

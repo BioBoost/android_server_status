@@ -10,4 +10,9 @@
         android:title="@string/delete_target"
         android:titleCondensed="@string/delete">
     </item>
+    <item
+        android:id="@+id/reset_stats"
+        android:title="@string/reset_stats"
+        android:titleCondensed="@string/reset">
+    </item>
 </menu>

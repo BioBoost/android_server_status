@@ -20,6 +20,8 @@
     <string name="edit">Edit</string>
     <string name="delete_target">Delete Target</string>
     <string name="delete">Delete</string>
+    <string name="reset_stats">Reset Stats</string>
+    <string name="reset">Reset</string>
     
     <string-array name="target_types">
         <item>Host</item>
