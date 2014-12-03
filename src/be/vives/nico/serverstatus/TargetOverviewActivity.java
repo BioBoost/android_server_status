@@ -91,7 +91,7 @@ public class TargetOverviewActivity extends ListActivity {
         switch (item.getItemId()) {
 	        case R.id.new_target:
 	            Log.v("Menu", "Creating new target");
-	            startActivity(new Intent(this, CreateTargetActivity.class));
+	            startActivity(new Intent(this, SaveTargetActivity.class));
 	            return true;
 	        case R.id.delete_all_targets:
 	        	// Ask user if he's sure

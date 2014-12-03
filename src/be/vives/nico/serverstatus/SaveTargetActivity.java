@@ -8,15 +8,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class CreateTargetActivity extends Activity {
+public class SaveTargetActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_target);
+		setContentView(R.layout.activity_save_target);
 	}
 	
-	public void onCreateTarget(View v) {
+	public void onSaveTarget(View v) {
 
 		// Get target info
 		String uri = ((EditText)findViewById(R.id.txtTargetUri)).getText().toString();

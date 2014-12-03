@@ -13,6 +13,7 @@
     <string name="target_uri">Target URI</string>
     <string name="target_type">Target type</string>
     <string name="create_target">Create Target</string>
+    <string name="save_target">Save Target</string>
     <string name="delete_all_targets">Delete All</string>
     <string name="refresh_targets">Refresh</string>
     <string name="edit_target">Edit Target</string>
