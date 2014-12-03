@@ -17,7 +17,7 @@ public class ServerStatusService extends Service {
     
     private static Boolean keepRunning = true;
     
-    private final static int ALARM_THRESHOLD = 1;	// Should be added to Target class
+    private final static int ALARM_THRESHOLD = 5;	// Should be added to Target class
     
     // Preferences
     private boolean alarm_dovibrate;    
