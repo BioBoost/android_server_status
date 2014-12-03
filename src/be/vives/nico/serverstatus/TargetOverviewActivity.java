@@ -9,14 +9,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import be.vives.nico.serverstatus.TargetDetails;
 
@@ -36,6 +40,9 @@ public class TargetOverviewActivity extends ListActivity {
 		
 		// Add targets to list
         populateTargets();
+        
+        // Register context menu for listview
+        this.registerForContextMenu(getListView());
 	}
 	
     private void populateTargets()
@@ -116,6 +123,32 @@ public class TargetOverviewActivity extends ListActivity {
 	            return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+	
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.target_context_menu, menu);
+    }
+    
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        // Get info on selected target
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        Target target = null;
+        switch (item.getItemId()) {
+            case R.id.edit_target:
+                target = targets.get(info.position);
+                Toast.makeText(this, "Edit target " + target.getUri(), Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.delete_target:
+                target = targets.get(info.position);
+                Toast.makeText(this, "Delete target " + target.getUri(), Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
         }
     }
 }

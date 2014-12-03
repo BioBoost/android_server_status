@@ -12,6 +12,8 @@ Description goes here
 
 * Display service status on main UI.
 
+* Add ability to reset stats
+
 == References ==
 
 * Nice blog on using drawables for button skins: http://www.dibbus.com/2011/02/gradient-buttons-for-android/
