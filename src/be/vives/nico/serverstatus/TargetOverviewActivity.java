@@ -28,6 +28,9 @@ public class TargetOverviewActivity extends ListActivity {
 
 	//private ArrayList<String> targets;
 	private ArrayList<Target> targets;
+	
+	// Selected target for context menu
+	private Target selectedTarget;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -137,20 +140,46 @@ public class TargetOverviewActivity extends ListActivity {
     public boolean onContextItemSelected(MenuItem item) {
         // Get info on selected target
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        Target target = null;
+        this.selectedTarget = targets.get(info.position);
         switch (item.getItemId()) {
-            case R.id.edit_target:
-                target = targets.get(info.position);
-                
+            case R.id.edit_target:                
                 // Launch save target activity with id as data
                 Intent intent = new Intent(this, SaveTargetActivity.class);
-                intent.setData(Uri.parse(target.getId() + ""));
+                intent.setData(Uri.parse(selectedTarget.getId() + ""));
                 startActivity(intent);
                 
                 return true;
             case R.id.delete_target:
-                target = targets.get(info.position);
-                Toast.makeText(this, "Delete target " + target.getUri(), Toast.LENGTH_SHORT).show();
+            	
+	        	// Ask user if he's sure
+	        	new AlertDialog.Builder(this)
+	            .setIcon(android.R.drawable.ic_dialog_alert)
+	            .setTitle("Deleting Target")
+	            .setMessage("Are you sure you want to delete the target " + selectedTarget.getUri() + " from the database?")
+	            .setPositiveButton("Yes I Am", new DialogInterface.OnClickListener()
+		        {
+		            @Override
+		            public void onClick(DialogInterface dialog, int which) {
+			            Log.v("Menu", "Deleting target " + selectedTarget.getUri() + " from db");
+		            	
+			            // Remove target from the database
+			    		TargetsDataSource doa = new TargetsDataSource(getBaseContext());
+			    		doa.open();
+			    		doa.deleteTarget(selectedTarget);
+			    		doa.close();
+		                
+		                Toast.makeText(getApplicationContext(), "Deleted target " + selectedTarget.getUri(), Toast.LENGTH_SHORT).show();
+		                
+		                // Re-populate listview
+		                populateTargets();
+			            
+			            // Reset selected target to null
+			            selectedTarget = null;
+		            }
+		        })
+		        .setNegativeButton("No", null)
+		        .show();
+	        	
                 return true;
             default:
                 return super.onContextItemSelected(item);
