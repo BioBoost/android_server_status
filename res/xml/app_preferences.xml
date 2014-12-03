@@ -8,5 +8,6 @@
     <PreferenceCategory android:key="cat_reporting" android:title="@string/reporting">
         <CheckBoxPreference android:key="alarm_vibrate" android:title="@string/vibrate"/>
         <CheckBoxPreference android:key="alarm_sentsms" android:title="@string/sent_sms"/>
+        <CheckBoxPreference android:key="alarm_notification" android:title="@string/notification"/>
     </PreferenceCategory>
 </PreferenceScreen>

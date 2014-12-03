@@ -27,6 +27,7 @@
     <string name="vibrate">Vibrate</string>
     <string name="sent_sms">Sent SMS</string>
     <string name="phone_number">Phone Number</string>
+    <string name="notification">Notification</string>
 
     <string-array name="target_types">
         <item>Host</item>

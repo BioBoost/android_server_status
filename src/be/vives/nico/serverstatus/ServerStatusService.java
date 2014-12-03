@@ -23,6 +23,7 @@ public class ServerStatusService extends Service {
     private boolean alarm_dovibrate;    
     private boolean alarm_dosms;
     private String alarm_phonenumber;
+    private boolean alarm_notification;
     
     @Override
     public IBinder onBind(Intent intent) {
@@ -42,6 +43,7 @@ public class ServerStatusService extends Service {
     	alarm_dovibrate = appPrefs.getBoolean("alarm_vibrate", false);
     	alarm_dosms = appPrefs.getBoolean("alarm_sentsms", false);
     	alarm_phonenumber = appPrefs.getString("phone_number", "");
+    	alarm_notification = appPrefs.getBoolean("alarm_notification", false);
     }
 
     @Override
@@ -65,7 +67,9 @@ public class ServerStatusService extends Service {
 						if (alarm_dosms) {
 							ReportTools.sendSMS(alarm_phonenumber, target.getFailedStatusReport());							
 						}
-						ReportTools.createNotification(getApplicationContext(), target, target.getFailedStatusReport());
+						if (alarm_notification) {
+							ReportTools.createNotification(getApplicationContext(), target, target.getFailedStatusReport());			
+						}
 						target.getStats().resetSubsequentFails();
 					}
 
