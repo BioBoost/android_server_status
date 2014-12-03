@@ -7,6 +7,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -18,6 +20,11 @@ public class ServerStatusService extends Service {
     
     private final static int ALARM_THRESHOLD = 5;	// Should be added to Target class
     
+    // Preferences
+    private boolean alarm_dovibrate;    
+    private boolean alarm_dosms;
+    private String alarm_phonenumber;
+    
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -26,6 +33,16 @@ public class ServerStatusService extends Service {
     @Override
     public void onCreate() {
     	Log.v(TAG, "onCreate");
+    	
+    	// Get preferences and register listener
+    	getPreferences();
+    }
+    
+    private void getPreferences() {
+    	SharedPreferences appPrefs = getSharedPreferences("be.vives.nico.serverstatus_preferences", MODE_PRIVATE);
+    	alarm_dovibrate = appPrefs.getBoolean("alarm_vibrate", false);
+    	alarm_dosms = appPrefs.getBoolean("alarm_sentsms", false);
+    	alarm_phonenumber = appPrefs.getString("phone_number", "");
     }
 
     @Override
@@ -43,8 +60,12 @@ public class ServerStatusService extends Service {
 				@Override
 				public void onStatusResultReady(Target target) {
 					if (target.getStats().getSubsequentFails() >= ServerStatusService.ALARM_THRESHOLD) {
-						//ReportTools.sendSMS("+32473526520", target.getFailedStatusReport());
-						ReportTools.vibrate(getApplicationContext(), 2000);
+						if (alarm_dovibrate) {
+							ReportTools.vibrate(getApplicationContext(), 2000);
+						}
+						if (alarm_dosms) {
+							ReportTools.sendSMS(alarm_phonenumber, target.getFailedStatusReport());							
+						}
 						target.getStats().resetSubsequentFails();
 					}
 
