@@ -39,20 +39,10 @@
         android:onClick="displayTargets" />
 
     <Button
-        android:id="@+id/resetDatabase"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/displayTargets"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        android:onClick="resetDatabase"
-        android:text="Reset Database" />
-
-    <Button
         android:id="@+id/appPreferences"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/resetDatabase"
+        android:layout_below="@+id/displayTargets"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:onClick="openPreferences"

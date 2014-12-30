@@ -38,37 +38,6 @@ public class MainActivity extends Activity {
 		startActivity(new Intent(this, TargetOverviewActivity.class));
 	}
 	
-	public void resetDatabase(View v) {
-		
-		Target[] samples = {
-				new TargetHost("www.labict.be"),
-				new TargetHost("www.vives.be"),
-				new TargetHost("www.amazon.com"),
-				new TargetHost("www.khbo.be"),
-				new TargetHost("www.example.org"),
-				new TargetSite("http://www.labict.be"),
-				new TargetSite("http://www.labict.be/fake")
-		};
-		
-		TargetsDataSource doa = new TargetsDataSource(this);
-		doa.open();
-		
-		// Remove all existing records
-		doa.deleteAllTargets();
-		
-		for (Target target : samples) {
-			Target result = doa.insertTarget(target);
-			
-			if (result != null) {
-				Log.v("DATABASE", "Created record with id = " + result.getId());
-			} else {
-				Log.d("DATABASE", "Failed to create record");
-			}
-		}
-		
-		doa.close();
-	}
-	
 	public void openPreferences(View view) {
 		startActivity(new Intent(this, AppPreferenceActivity.class));
 	}
